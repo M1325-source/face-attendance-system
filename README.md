@@ -318,6 +318,6 @@ For issues or questions regarding this project, please refer to the documentatio
 
 ---
 
-**Created by**: AI/ML Intern Assignment
+**Created by**: Manisha Priya
 **Date**: 2024
 **Version**: 1.0.0
