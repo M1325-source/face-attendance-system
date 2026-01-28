@@ -9,6 +9,11 @@ import pandas as pd
 from utils.face_utils import FaceRecognitionSystem
 from utils.anti_spoof import AntiSpoofDetector
 
+# -------------------- ENV CHECK --------------------
+# Render sets this automatically
+IS_PROD = os.environ.get("RENDER") == "true"
+
+# -------------------- APP CONFIG --------------------
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "your-secret-key-here"
 app.config["UPLOAD_FOLDER"] = "data/faces"
@@ -18,9 +23,7 @@ app.config["ATTENDANCE_FOLDER"] = "data/attendance"
 face_system = FaceRecognitionSystem()
 anti_spoof = AntiSpoofDetector()
 
-# Global camera
 camera = None
-
 
 # -------------------- ROUTES --------------------
 
@@ -43,7 +46,6 @@ def attendance_page():
 def records_page():
     records = face_system.get_attendance_records()
     return render_template("records.html", records=records)
-
 
 # -------------------- API --------------------
 
@@ -75,7 +77,7 @@ def mark_attendance():
     try:
         data = request.json
         image_data = data.get("image")
-        action = data.get("action")  # punch-in / punch-out
+        action = data.get("action")
 
         if not all([image_data, action]):
             return jsonify({"success": False, "message": "Missing required fields"})
@@ -142,11 +144,14 @@ def attendance_report():
     report = face_system.get_attendance_report(start_date, end_date)
     return jsonify({"success": True, "report": report})
 
-
 # -------------------- VIDEO STREAM --------------------
 
 @app.route("/video_feed")
 def video_feed():
+    # ❌ Camera not available on cloud (Render)
+    if IS_PROD:
+        return "Camera not available in production", 503
+
     return Response(
         generate_frames(),
         mimetype="multipart/x-mixed-replace; boundary=frame"
@@ -174,7 +179,6 @@ def generate_frames():
             b"--frame\r\n"
             b"Content-Type: image/jpeg\r\n\r\n" + frame + b"\r\n"
         )
-
 
 # -------------------- MAIN --------------------
 
