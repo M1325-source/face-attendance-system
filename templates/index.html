@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Authentication Attendance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Face Authentication Attendance System</h1>
+            <p class="subtitle">AI-Powered Attendance Tracking</p>
+        </header>
+
+        <nav class="nav-menu">
+            <a href="/" class="nav-link active">Home</a>
+            <a href="/register" class="nav-link">Register</a>
+            <a href="/attendance" class="nav-link">Mark Attendance</a>
+            <a href="/records" class="nav-link">View Records</a>
+        </nav>
+
+        <main class="main-content">
+            <div class="welcome-section">
+                <h2>Welcome to the Attendance System</h2>
+                <p>This system uses advanced face recognition technology to manage attendance efficiently and securely.</p>
+            </div>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">👤</div>
+                    <h3>Face Registration</h3>
+                    <p>Register new users with their face data for quick identification</p>
+                    <a href="/register" class="btn btn-primary">Register Now</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">✅</div>
+                    <h3>Mark Attendance</h3>
+                    <p>Punch-in and punch-out with facial recognition</p>
+                    <a href="/attendance" class="btn btn-primary">Mark Attendance</a>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>View Records</h3>
+                    <p>Access comprehensive attendance reports and analytics</p>
+                    <a href="/records" class="btn btn-primary">View Records</a>
+                </div>
+            </div>
+
+            <div class="system-features">
+                <h3>System Features</h3>
+                <div class="features-list">
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>Real-time camera input processing</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>Handles varying lighting conditions</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>Anti-spoof detection (prevents photo/video attacks)</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>Accurate face recognition with confidence scores</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>Punch-in and punch-out tracking</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="check">✓</span>
+                        <span>Comprehensive attendance reports</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-section">
+                <h3>How It Works</h3>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <h4>Register</h4>
+                        <p>Capture your face and provide basic details</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <h4>Authenticate</h4>
+                        <p>System identifies you using facial recognition</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <h4>Track</h4>
+                        <p>Attendance is automatically recorded with timestamp</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy;  Face Authentication Attendance System </p>
+        </footer>
+    </div>
+</body>
+</html>

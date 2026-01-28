@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Attendance - Face Attendance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>✅ Mark Attendance</h1>
+            <p class="subtitle">Punch-in or Punch-out with face recognition</p>
+        </header>
+
+        <nav class="nav-menu">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/register" class="nav-link">Register</a>
+            <a href="/attendance" class="nav-link active">Mark Attendance</a>
+            <a href="/records" class="nav-link">View Records</a>
+        </nav>
+
+        <main class="main-content">
+            <div class="attendance-container">
+                <div class="action-selector">
+                    <h3>Select Action</h3>
+                    <div class="action-buttons">
+                        <button id="punchInBtn" class="action-btn active" data-action="punch-in">
+                            <span class="action-icon">→</span>
+                            <span>Punch In</span>
+                        </button>
+                        <button id="punchOutBtn" class="action-btn" data-action="punch-out">
+                            <span class="action-icon">←</span>
+                            <span>Punch Out</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="camera-section">
+                    <div class="camera-container">
+                        <video id="video" autoplay playsinline></video>
+                        <canvas id="canvas" style="display: none;"></canvas>
+                        <div id="faceDetectionOverlay" class="face-overlay"></div>
+                    </div>
+                    
+                    <div class="camera-controls">
+                        <button id="startCamera" class="btn btn-secondary">Start Camera</button>
+                        <button id="captureBtn" class="btn btn-primary" disabled>Capture & Mark Attendance</button>
+                    </div>
+                </div>
+
+                <div class="identification-result" id="identificationResult" style="display: none;">
+                    <h3>Identified User</h3>
+                    <div class="user-info">
+                        <div class="info-row">
+                            <span class="label">Name:</span>
+                            <span id="userName" class="value"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">User ID:</span>
+                            <span id="userId" class="value"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Confidence:</span>
+                            <span id="confidence" class="value"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Action:</span>
+                            <span id="actionType" class="value"></span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">Time:</span>
+                            <span id="timestamp" class="value"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="instructions">
+                    <h4>📋 Instructions</h4>
+                    <ul>
+                        <li>Select whether you want to Punch-in or Punch-out</li>
+                        <li>Click "Start Camera" to begin</li>
+                        <li>Position your face in the center of the frame</li>
+                        <li>Ensure good lighting conditions</li>
+                        <li>Click "Capture & Mark Attendance" when ready</li>
+                        <li>Wait for face recognition and attendance confirmation</li>
+                    </ul>
+                    
+                    <div class="note">
+                        <strong>Note:</strong> Make sure you are already registered in the system. 
+                        If not, please <a href="/register">register here</a> first.
+                    </div>
+                </div>
+            </div>
+
+            <div id="message" class="message"></div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Face Authentication Attendance System</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/attendance.js') }}"></script>
+</body>
+</html>

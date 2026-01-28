@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Records - Face Attendance System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Attendance Records</h1>
+            <p class="subtitle">View and analyze attendance data</p>
+        </header>
+
+        <nav class="nav-menu">
+            <a href="/" class="nav-link">Home</a>
+            <a href="/register" class="nav-link">Register</a>
+            <a href="/attendance" class="nav-link">Mark Attendance</a>
+            <a href="/records" class="nav-link active">View Records</a>
+        </nav>
+
+        <main class="main-content">
+            <div class="records-container">
+                <div class="filters-section">
+                    <h3>Filter Records</h3>
+                    <div class="filter-form">
+                        <div class="form-group">
+                            <label for="startDate">Start Date</label>
+                            <input type="date" id="startDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="endDate">End Date</label>
+                            <input type="date" id="endDate">
+                        </div>
+                        <div class="form-group">
+                            <label for="userFilter">User</label>
+                            <select id="userFilter">
+                                <option value="">All Users</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="actionFilter">Action</label>
+                            <select id="actionFilter">
+                                <option value="">All Actions</option>
+                                <option value="punch-in">Punch In</option>
+                                <option value="punch-out">Punch Out</option>
+                            </select>
+                        </div>
+                        <button id="filterBtn" class="btn btn-primary">Apply Filter</button>
+                        <button id="resetBtn" class="btn btn-secondary">Reset</button>
+                    </div>
+                </div>
+
+                <div class="statistics">
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalRecords">0</div>
+                        <div class="stat-label">Total Records</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="totalUsers">0</div>
+                        <div class="stat-label">Registered Users</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="todayAttendance">0</div>
+                        <div class="stat-label">Today's Attendance</div>
+                    </div>
+                </div>
+
+                <div class="table-section">
+                    <div class="table-header">
+                        <h3>Attendance Records</h3>
+                        <button id="exportBtn" class="btn btn-secondary">Export CSV</button>
+                    </div>
+                    
+                    <div class="table-container">
+                        <table id="attendanceTable">
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th>Name</th>
+                                    <th>User ID</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="tableBody">
+                                {% if records %}
+                                    {% for record in records %}
+                                    <tr>
+                                        <td>{{ record.date }}</td>
+                                        <td>{{ record.time }}</td>
+                                        <td>{{ record.name }}</td>
+                                        <td>{{ record.user_id }}</td>
+                                        <td>
+                                            <span class="badge badge-{{ 'success' if record.action == 'punch-in' else 'info' }}">
+                                                {{ record.action }}
+                                            </span>
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                {% else %}
+                                    <tr>
+                                        <td colspan="5" style="text-align: center;">No records found</td>
+                                    </tr>
+                                {% endif %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="registered-users">
+                    <h3>Registered Users</h3>
+                    <div id="usersList" class="users-grid"></div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Face Authentication Attendance System</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/records.js') }}"></script>
+</body>
+</html>

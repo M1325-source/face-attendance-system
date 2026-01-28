@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environment
+venv/
+.env
+
+# Data folders
+data/
+models/*.pkl
+models/*.pickle
+
+# OS
+.DS_Store
+Thumbs.db
+
+# VS Code
+.vscode/
