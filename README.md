@@ -4,6 +4,22 @@
 
 A comprehensive face recognition-based attendance management system built using Flask, OpenCV, and face_recognition library. This system enables automated attendance tracking through facial authentication with anti-spoofing capabilities.
 
+## ✨ Screenshots
+<img width="1549" height="949" alt="image" src="https://github.com/user-attachments/assets/12e4736b-f665-408c-99a4-f1c0cbd14c8b" />
+
+<img width="1540" height="948" alt="image" src="https://github.com/user-attachments/assets/ea9aa38e-286c-48c6-bb01-ed9b6e0227f7" />
+
+<img width="1519" height="936" alt="image" src="https://github.com/user-attachments/assets/cca87d9d-dfb6-40f9-9c7f-760f70c8da21" />
+
+<img width="1155" height="670" alt="image" src="https://github.com/user-attachments/assets/d8516c0b-99a0-4ba3-90ea-80316e8d3d48" />
+
+<img width="1525" height="949" alt="image" src="https://github.com/user-attachments/assets/178437e2-6b90-4bf6-b65b-a57199864f1e" />
+
+
+
+
+
+
 ## ✨ Features
 
 ### Core Functionality
